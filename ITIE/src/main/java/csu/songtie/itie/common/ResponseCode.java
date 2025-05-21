@@ -15,4 +15,4 @@ public enum ResponseCode {
         this.description = description;
     }
 
-    }
+}
