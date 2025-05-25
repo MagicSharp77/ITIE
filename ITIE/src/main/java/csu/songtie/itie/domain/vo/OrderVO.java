@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class OrderVO {
     // order 字段
-    private int orderId;
+    private String orderId;
     private String userName;
     private int lineNum;
     private String payMethod;

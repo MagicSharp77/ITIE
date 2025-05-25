@@ -10,7 +10,7 @@ import lombok.Data;
 @TableName("order")
 public class Order {
     @TableId(value = "order_id",type = IdType.INPUT)
-    private int orderId;
+    private String orderId;
     @TableField(value = "username")
     private String userName;
     @TableField(value = "linenum")

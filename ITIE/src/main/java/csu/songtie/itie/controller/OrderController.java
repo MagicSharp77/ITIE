@@ -29,7 +29,8 @@ public class OrderController {
     @ResponseBody
     public CommonResponse<List<OrderVO>> insertOrderVO(@RequestBody OrderRequest request){
         if(request.getLineItemList().isEmpty()){
-            return CommonResponse.createForError(ResponseCode.NO_LINEITEM.getCode(),"该订单有误，无lineitem，是空订单");
+            return CommonResponse.createForError(ResponseCode.ORDER_LINEITEM_EMPTY_ERROR.getCode(),
+                    ResponseCode.ORDER_LINEITEM_EMPTY_ERROR.getDescription());
         }
         orderService.insertOrderVO(request.getOrderVO(),request.getLineItemList());
         return CommonResponse.createForSuccessMessage("成功提交订单");
