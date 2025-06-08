@@ -11,12 +11,12 @@ import java.time.LocalDateTime;
 @Data
 @TableName("user_info")
 public class UserInfo {
-    @TableId()
+    @TableId(value = "id",type = IdType.AUTO)
     private Long id;
     @TableField(value = "user_id")
     private String userId;
     @TableField(value = "username")
-    private String userName;
+    private String username;
     @TableField(value = "last_name")
     private String lastName;
     @TableField(value = "first_name")

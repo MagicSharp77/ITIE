@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Data
 @TableName("wish_list")
 public class WishList {
-    @TableId()
+    @TableId(value = "id",type = IdType.AUTO)
     private Long id;
     @TableField(value = "user_id")
     private String userId;

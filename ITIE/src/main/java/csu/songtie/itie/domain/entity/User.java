@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @TableName("user")
 @Data
 public class User {
-    @TableId()
+    @TableId(value = "id",type = IdType.AUTO)
     private Long id;
     @TableField(value = "user_id")
     private String userId;
@@ -27,9 +27,7 @@ public class User {
     @TableField(value = "student_id")
     private String studentId;
     @TableField(value = "role")
-    private String role;
-    @TableField(value = "username")
-    private String username;
+    private int role;
     @TableField(value = "created_at")
     private LocalDateTime createdAt;
     @TableField(value = "updated_at")

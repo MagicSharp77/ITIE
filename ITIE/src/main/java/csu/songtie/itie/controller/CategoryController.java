@@ -13,8 +13,8 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    public CommonResponse<List<Category>> getAllCategories() {
-        return CommonResponse.createForSuccess(1,"",categoryService.getAllCategories);
-    }
+//    public CommonResponse<List<Category>> getAllCategories() {
+//        return CommonResponse.createForSuccess(1,"",categoryService.getAllCategories);
+//    }
 
 }
