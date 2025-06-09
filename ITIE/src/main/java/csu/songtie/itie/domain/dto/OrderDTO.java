@@ -1,50 +1,62 @@
 package csu.songtie.itie.domain.dto;
 
-import csu.songtie.itie.domain.entity.order.LineItem;
+import csu.songtie.itie.domain.entity.order.OrderItem;
 import csu.songtie.itie.domain.entity.order.Order;
-import csu.songtie.itie.domain.entity.order.OrderStatus;
 import csu.songtie.itie.domain.vo.OrderVO;
 
 import java.util.List;
 
 public class OrderDTO {
-    public static OrderVO entityToVO(Order order, OrderStatus orderStatus, List<LineItem> lineItemList){
+    // 将 order 与  orderItem 组装成 OrderVO
+    public static OrderVO entityToVO(Order order, List<OrderItem> orderItemList){
         OrderVO orderVO = new OrderVO();
 
         // 插入 order 字段
         orderVO.setOrderId(order.getOrderId());
-        orderVO.setUserName(order.getUserName());
-        orderVO.setLineNum(order.getLineNum());
-        orderVO.setPayMethod(order.getPayMethod());
-        orderVO.setTotalPrice(order.getTotalPrice());
-
-        // 插入 orderStatus 字段
-        orderVO.setStatus(orderStatus.getStatus());
+        orderVO.setUserId(order.getUserId());
+        orderVO.setStatus(order.getStatus());
+        orderVO.setPaymentType(order.getPaymentType());
+        orderVO.setPaymentTime(order.getPaymentTime());
+        orderVO.setPaymentPrice(order.getPaymentPrice());
+        orderVO.setOriginalPrice(order.getOriginalPrice());
+        orderVO.setCouponId(order.getCouponId());
+        orderVO.setCouponOwnerId(order.getCouponOwnerId());
+        orderVO.setCouponPrice(order.getCouponPrice());
+        orderVO.setCreateTime(order.getCreateTime());
+        orderVO.setUpdateTime(order.getUpdateTime());
+        orderVO.setDeleteTime(order.getDeleteTime());
+        orderVO.setUnused(order.getUnused());
 
         // 插入 LineItem 字段
-        orderVO.setLineItemList(lineItemList);
+        orderVO.setOrderItemList(orderItemList);
 
         return orderVO;
     }
 
+    // 将 orderVO 拆成 order
     public static Order vOToEntity(OrderVO orderVO){
         Order order = new Order();
 
         order.setOrderId(orderVO.getOrderId());
-        order.setUserName(orderVO.getUserName());
-        order.setLineNum(orderVO.getLineNum());
-        order.setPayMethod(orderVO.getPayMethod());
-        order.setTotalPrice(orderVO.getTotalPrice());
+        order.setUserId(orderVO.getUserId());
+        order.setStatus(orderVO.getStatus());
+        order.setPaymentType(orderVO.getPaymentType());
+        order.setPaymentTime(orderVO.getPaymentTime());
+        order.setPaymentPrice(orderVO.getPaymentPrice());
+        order.setOriginalPrice(orderVO.getOriginalPrice());
+        order.setCouponId(orderVO.getCouponId());
+        order.setCouponOwnerId(orderVO.getCouponOwnerId());
+        order.setCouponPrice(orderVO.getCouponPrice());
+        order.setCreateTime(orderVO.getCreateTime());
+        order.setUpdateTime(orderVO.getUpdateTime());
+        order.setDeleteTime(orderVO.getDeleteTime());
+        order.setUnused(orderVO.getUnused());
 
         return order;
     }
 
-    public static OrderStatus vOToOrderStatus(OrderVO orderVO){
-        OrderStatus orderStatus = new OrderStatus();
-
-        orderStatus.setOrderId(orderVO.getOrderId());
-        orderStatus.setStatus(orderVO.getStatus());
-
-        return orderStatus;
+    // 将 orderVO 拆成 itemList
+    public static List<OrderItem> vOToItemList(OrderVO orderVO){
+        return orderVO.getOrderItemList();
     }
 }

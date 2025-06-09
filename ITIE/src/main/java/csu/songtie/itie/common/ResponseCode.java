@@ -32,6 +32,7 @@ public enum ResponseCode {
     ORDER_LIST_GET_SUCCESS(1201,"获取订单列表信息成功"),
     ORDER_CREATE_SUCCESS(1202,"订单创建成功"),
     ORDER_PAY_SUCCESS(1203,"订单支付成功"),
+    ORDER_UPDATE_SUCCESS(1204,"订单状态更新成功"),
 
 
     // 错误码从 2000 开始，命名规则与成功码相同
@@ -44,15 +45,15 @@ public enum ResponseCode {
     ORDER_LINEITEM_EMPTY_ERROR(2202,"订单内容不能为空"),
 
     // 支付相关错误码 (2000-2099)
-    PAYMENT_CREATE_FAILED(2000, "创建支付订单失败"),
-    PAYMENT_NOTIFY_FAILED(2001, "处理支付回调通知失败"),
-    PAYMENT_QUERY_FAILED(2002, "查询支付订单状态失败"),
-    PAYMENT_CLOSE_FAILED(2003, "关闭支付订单失败"),
-    PAYMENT_AMOUNT_INVALID(2004, "支付金额无效"),
-    PAYMENT_ORDER_NOT_FOUND(2005, "支付订单不存在"),
-    PAYMENT_SIGNATURE_INVALID(2006, "支付签名验证失败"),
-    PAYMENT_ALREADY_PAID(2007, "订单已支付"),
-    PAYMENT_ALREADY_CLOSED(2008, "订单已关闭");
+    PAYMENT_CREATE_FAILED(2210, "创建支付订单失败"),
+    PAYMENT_NOTIFY_FAILED(2211, "处理支付回调通知失败"),
+    PAYMENT_QUERY_FAILED(2212, "查询支付订单状态失败"),
+    PAYMENT_CLOSE_FAILED(2213, "关闭支付订单失败"),
+    PAYMENT_AMOUNT_INVALID(2214, "支付金额无效"),
+    PAYMENT_ORDER_NOT_FOUND(2215, "支付订单不存在"),
+    PAYMENT_SIGNATURE_INVALID(2216, "支付签名验证失败"),
+    PAYMENT_ALREADY_PAID(2217, "订单已支付"),
+    PAYMENT_ALREADY_CLOSED(2218, "订单已关闭");
 
     private final int code;
     private final String description;
