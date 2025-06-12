@@ -1,5 +1,6 @@
 package csu.songtie.itie.controller;
 
+import csu.songtie.itie.annotation.LogAction;
 import csu.songtie.itie.common.CommonResponse;
 import csu.songtie.itie.common.ResponseCode;
 import csu.songtie.itie.domain.entity.UserInfo;
@@ -13,8 +14,9 @@ public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
 
-    @GetMapping("/")
-    public CommonResponse<UserInfo> getProfile(@RequestParam("userId") String userId) {
+    @LogAction("查看用户信息")
+    @GetMapping
+    public CommonResponse<UserInfo> getProfile(@RequestAttribute("userId") String userId) {
         UserInfo userInfo = userInfoService.getUserInfo(userId);
         return CommonResponse.createForSuccess(
                 ResponseCode.GET_USER_INFO_SUCCESS.getCode(),
@@ -22,12 +24,12 @@ public class UserInfoController {
                 userInfo);
     }
 
-    @PutMapping("/")
-    public CommonResponse<String> updateProfile(@RequestBody UserInfo userInfo) {
-        userInfoService.updateUserInfo(userInfo);
+    @LogAction("更新用户信息")
+    @PutMapping
+    public CommonResponse<String> updateProfile(@RequestAttribute("userId") String userId, @RequestBody UserInfo userInfo) {
+        userInfoService.updateUserInfo(userId, userInfo);
         return CommonResponse.createForSuccess(
                 ResponseCode.USER_INFO_UPDATE_SUCCESS.getCode(),
-                ResponseCode.USER_INFO_UPDATE_SUCCESS.getDescription(),
-                "");
+                ResponseCode.USER_INFO_UPDATE_SUCCESS.getDescription());
     }
 }

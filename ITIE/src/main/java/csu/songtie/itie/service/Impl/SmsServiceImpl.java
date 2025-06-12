@@ -8,7 +8,7 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import csu.songtie.itie.service.SmsService;
-import csu.songtie.itie.util.SmsConfig;
+import csu.songtie.itie.config.SmsConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

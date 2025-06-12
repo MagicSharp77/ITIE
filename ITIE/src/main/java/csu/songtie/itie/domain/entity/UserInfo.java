@@ -8,6 +8,26 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * 用户信息实体
+ *
+ * <p>包含字段：</p>
+ * <ul>
+ *   <li>id - 主键ID，自增</li>
+ *   <li>userId - 关联用户ID</li>
+ *   <li>username - 用户名</li>
+ *   <li>lastName - 姓</li>
+ *   <li>firstName - 名</li>
+ *   <li>major - 专业</li>
+ *   <li>allowEmailNotify - 是否允许邮件通知</li>
+ *   <li>allowSMSNotify - 是否允许短信通知</li>
+ *   <li>avatarUrl - 头像URL</li>
+ *   <li>createdAt - 创建时间</li>
+ *   <li>updatedAt - 最后更新时间</li>
+ *   <li>deletedAt - 删除时间（软删除标记）</li>
+ *   <li>unused - 预留字段（未使用）</li>
+ * </ul>
+ */
 @Data
 @TableName("user_info")
 public class UserInfo {
