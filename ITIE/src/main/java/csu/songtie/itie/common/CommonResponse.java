@@ -29,7 +29,6 @@ public class CommonResponse<T>{
         return new CommonResponse<T>(code,message);
     }
 
-
 //    public static <T>CommonResponse<T> createForError(){
 //        return new CommonResponse<T>(ResponseCode.ERROR.getCode(), ResponseCode.ERROR.getDescription());
 //    }
