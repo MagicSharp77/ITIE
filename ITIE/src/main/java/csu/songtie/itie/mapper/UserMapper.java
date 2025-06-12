@@ -9,6 +9,10 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper extends BaseMapper<User> {
     @Select("SELECT COUNT(*) FROM user WHERE phone = #{phone}")
     boolean existsByPhone(String phone);
+    @Select("SELECT user_id FROM user WHERE phone = #{phone}")
+    String selectUserIdByPhone(String phone);
     @Select("SELECT * FROM user WHERE phone = #{phone}")
-    User getUserByPhone(String phone);
+    User selectByPhone(String phone);
+    @Select("SELECT * FROM user WHERE userId = #{userId}")
+    User selectByUserId(String userId);
 }

@@ -19,4 +19,9 @@ public class GlobalExceptionHandler {
         return null;
     }
 
+    @ExceptionHandler(BusinessException.class)
+    public CommonResponse<?> handleBusinessException(BusinessException ex) {
+        return CommonResponse.createForError(ex.getErrorCode(), ex.getMessage());
+    }
+
 }
