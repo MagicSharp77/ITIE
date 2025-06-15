@@ -34,6 +34,10 @@ public enum ResponseCode {
     ORDER_PAY_SUCCESS(1203,"订单支付成功"),
     ORDER_UPDATE_SUCCESS(1204,"订单状态更新成功"),
 
+    // --- 13xx:购物车业务成功状态码
+    CART_GET_SUCCESS(1300,"获取购物车信息成功"),
+    CART_CREATE_SUCCESS(1301,"创建购物车成功"),
+    CART_UPDATE_SUCCESS(1302,"购物车信息更新成功"),
 
     // 错误码从 2000 开始，命名规则与成功码相同
 
@@ -53,7 +57,11 @@ public enum ResponseCode {
     PAYMENT_ORDER_NOT_FOUND(2215, "支付订单不存在"),
     PAYMENT_SIGNATURE_INVALID(2216, "支付签名验证失败"),
     PAYMENT_ALREADY_PAID(2217, "订单已支付"),
-    PAYMENT_ALREADY_CLOSED(2218, "订单已关闭");
+    PAYMENT_ALREADY_CLOSED(2218, "订单已关闭"),
+
+    // --- 23xx:购物车业务失败状态码
+    CART_EMPTY_ERROR(2300,"购物车为空");
+
 
     private final int code;
     private final String description;

@@ -12,13 +12,14 @@ import csu.songtie.itie.config.AlipayConfig;
 import csu.songtie.itie.service.AlipayService;
 import csu.songtie.itie.common.CommonResponse;
 import csu.songtie.itie.common.ResponseCode;
+import csu.songtie.itie.domain.entity.order.Order;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import jakarta.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.HashMap;
-
 /**
  * 支付宝支付服务实现类
  */
@@ -28,7 +29,6 @@ public class AlipayServiceImpl implements AlipayService {
 
     @Autowired
     private AlipayConfig alipayConfig;
-
     private AlipayClient alipayClient;
 
     /**
@@ -48,7 +48,7 @@ public class AlipayServiceImpl implements AlipayService {
     }
 
     @Override
-    public CommonResponse<String> createPayment(String orderId, String amount, String subject) throws AlipayApiException {
+    public CommonResponse<String> createPayment(Order order) throws AlipayApiException {
         // 创建支付请求
         AlipayTradePagePayRequest request = new AlipayTradePagePayRequest();
         request.setNotifyUrl(alipayConfig.getNotifyUrl());
@@ -57,14 +57,14 @@ public class AlipayServiceImpl implements AlipayService {
         // 构建请求参数
         String bizContent = String.format(
             "{\"out_trade_no\":\"%s\"," +
-            "\"total_amount\":\"%s\"," +
+            "\"total_amount\":\"%.2f\"," +
             "\"subject\":\"%s\"," +
             "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}",
-            orderId, amount, subject
+            order.getOrderId(),
+            order.getPaymentPrice(),
+            order.getUserId() + "的订单"  // 使用用户名+订单作为subject
         );
         request.setBizContent(bizContent);
-
-        // TODO: 创建订单，持久化为未支付订单
 
         // 调用支付宝接口
         AlipayTradePagePayResponse response = alipayClient.pageExecute(request);
@@ -113,10 +113,15 @@ public class AlipayServiceImpl implements AlipayService {
         // 获取交易状态
         String tradeStatus = paramsMap.get("trade_status");
         if ("TRADE_SUCCESS".equals(tradeStatus)) {
-            // 处理支付成功逻辑
             String orderId = paramsMap.get("out_trade_no");
             String tradeNo = paramsMap.get("trade_no");
-            // TODO: 更新订单状态-也即持久化
+            
+            // TODO: 更新订单状态
+            // 1. 查询订单
+            // 2. 更新订单状态为已支付
+            // 3. 设置支付时间和交易流水号
+            // 4. 保存更新后的订单
+            
             return CommonResponse.createForSuccess(
                 ResponseCode.SUCCESS.getCode(),
                 ResponseCode.SUCCESS.getDescription(),

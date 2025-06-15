@@ -1,7 +1,9 @@
 package csu.songtie.itie.controller;
 
 import com.alipay.api.AlipayApiException;
+import csu.songtie.itie.domain.entity.order.Order;
 import csu.songtie.itie.service.AlipayService;
+import csu.songtie.itie.service.OrderService;
 import csu.songtie.itie.common.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +19,19 @@ public class AlipayController {
 
     @Autowired
     private AlipayService alipayService;
+    @Autowired
+    private OrderService orderService;
 
     /**
      * 创建支付订单 - 此处需要订单的持久化-未支付状态    此处的 createPayment 方法参数可能需要更改
-     * @param orderId 订单ID
-     * @param amount 支付金额
-     * @param subject 订单标题
+     * @param order 订单对象
      * @return 支付表单HTML
      */
     @PostMapping("/create")
-    public CommonResponse<String> createPayment(
-            @RequestParam String orderId,
-            @RequestParam String amount,
-            @RequestParam String subject) throws AlipayApiException {
-        return alipayService.createPayment(orderId, amount, subject);
+    public CommonResponse<String> createPayment(@RequestBody Order order) throws AlipayApiException {
+        // TODO:订单持久化 调用orderService的逻辑
+        // orderService.insertOrderVO(null, null);
+        return alipayService.createPayment(order);
     }
 
     /**
@@ -48,8 +49,8 @@ public class AlipayController {
      * @param orderId 订单ID
      * @return 支付状态
      */
-    @GetMapping("/status/{orderId}")
-    public CommonResponse<String> queryOrderStatus(@PathVariable String orderId) throws AlipayApiException {
+    @GetMapping("/query")
+    public CommonResponse<String> queryOrderStatus(@RequestParam String orderId) throws AlipayApiException {
         return alipayService.queryOrderStatus(orderId);
     }
 } 
