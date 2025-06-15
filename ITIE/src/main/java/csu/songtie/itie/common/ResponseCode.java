@@ -5,8 +5,9 @@ import lombok.Getter;
 @Getter
 public enum ResponseCode {
     // 成功码为正值，从 1000 开始
-
     SUCCESS(1,"成功"),
+
+    // 成功码为正值，从 1000 开始
 
     // --- 10xx: 用户业务成功状态码 (Business Success Codes) ---
     OPERATION_SUCCESS(1000, "操作成功"), // 通用操作成功
@@ -22,10 +23,13 @@ public enum ResponseCode {
     // 否则，它更像是一个提示信息，而非独立的成功状态码。这里先保留，但需注意其使用场景。
 
     // --- 11xx:课程业务成功状态码
-    CATEGORY_VO_FETCH_SUCCESS(1100, "获取分类信息成功"),
-    COURSE_VO_FETCH_SUCCESS(1110,"获取课程信息成功"),
-    CHAPTER_VO_FETCH_SUCCESS(1120, "获取章节信息成功"),
-    LESSON_VO_FETCH_SUCCESS(1130, "获取课信息成功"),
+    // --- 11xx:课程业务成功状态码
+    CATEGORY_LIST_FETCH_SUCCESS(1100, "获取分类列表成功"),
+    TAG_LIST_FETCH_SUCCESS(1101, "获取标签列表成功"),
+    COURSE_LIST_FETCH_SUCCESS(1110,"获取课程列表信息成功"),
+    SINGLE_COURSE_DETAIL_FETCH_SUCCESS(1111,"获取单个课程详情成功"),
+    CHAPTER_LIST_FETCH_SUCCESS(1120, "获取章节信息成功"),
+    LESSON_LIST_FETCH_SUCCESS(1130, "获取课信息成功"),
 
     // --- 12xx:订单业务成功状态码
     ORDER_GET_SUCCESS(1200,"获取订单信息成功"),
@@ -60,8 +64,13 @@ public enum ResponseCode {
     PAYMENT_ALREADY_CLOSED(2218, "订单已关闭"),
 
     // --- 23xx:购物车业务失败状态码
-    CART_EMPTY_ERROR(2300,"购物车为空");
+    CART_EMPTY_ERROR(2300,"购物车为空"),
 
+
+    ;
+
+
+    // 码为正值，从 1000 开始
 
     private final int code;
     private final String description;
@@ -70,7 +79,6 @@ public enum ResponseCode {
         this.code = code;
         this.description = description;
     }
-
     public int getCode() {
         return code;
     }
