@@ -6,5 +6,5 @@ import java.util.Map;
 
 @Service
 public interface SmsService {
-    public void send(Map<String, Object> param, String phone);
+    public boolean send(Map<String, Object> param, String phone);
 }
