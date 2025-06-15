@@ -1,6 +1,9 @@
 package csu.songtie.itie.common;
 
+import csu.songtie.itie.domain.vo.OrderVO;
 import lombok.Getter;
+
+import java.util.List;
 
 @Getter
 public class CommonResponse<T>{
@@ -29,6 +32,7 @@ public class CommonResponse<T>{
         return new CommonResponse<T>(code,message);
     }
 
+
 //    public static <T>CommonResponse<T> createForError(){
 //        return new CommonResponse<T>(ResponseCode.ERROR.getCode(), ResponseCode.ERROR.getDescription());
 //    }
@@ -36,5 +40,7 @@ public class CommonResponse<T>{
         return new CommonResponse<T>(code, message);
     }
 
-
+    public static <T>CommonResponse<T> createForSuccessMessage(String msg) {
+        return new CommonResponse<T>(ResponseCode.SUCCESS.getCode(),msg);
+    }
 }

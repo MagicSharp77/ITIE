@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: itie
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/itie
+    username: root
+    password: 15168797115
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+# 支付宝配置
+alipay:
+  app-id: 你的支付宝应用ID
+  private-key: 你的应用私钥
+  public-key: 支付宝公钥
+  notify-url: http://你的域名/api/pay/alipay/notify
+  return-url: http://你的域名/api/pay/alipay/return
+  gateway: https://openapi.alipay.com/gateway.do
+
+# 微信支付配置
+wx:
+  pay:
+    app-id: 你的微信应用ID
+    merchant-id: 你的商户号
+    merchant-serial-number: 你的商户证书序列号
+    merchant-private-key: 你的商户私钥
+    api-v3-key: 你的APIv3密钥
+    notify-url: http://你的域名/api/pay/wx/notify 
