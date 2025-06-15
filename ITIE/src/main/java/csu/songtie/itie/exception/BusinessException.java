@@ -24,4 +24,14 @@ public class BusinessException extends RuntimeException{
         super(responseCode.getDescription());
         this.errorCode = responseCode.getCode();
     }
+
+    /**
+     * 通过响应码枚举和异常原因构造异常
+     * @param responseCode 预定义的响应码枚举，包含错误码和描述信息
+     * @param cause 异常的原因，通常是另一个异常的实例
+     */
+    public BusinessException(ResponseCode responseCode, Throwable cause) {
+        super(responseCode.getDescription(), cause);
+        this.errorCode = responseCode.getCode();
+    }
 }

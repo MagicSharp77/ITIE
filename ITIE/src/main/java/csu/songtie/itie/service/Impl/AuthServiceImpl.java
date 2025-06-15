@@ -78,17 +78,11 @@ public class AuthServiceImpl implements AuthService {
         String captcha = RandomUtil.randomNumbers(6).toString();
         Map<String, Object> param = Map.of("code", captcha);
         // 为节约短信发送次数，暂时不发送短信
-        boolean result = true;
         System.out.println(captcha);
-        // boolean result = smsService.send(param, phone);
+        // smsService.send(param, phone);
 
-        if (result) {
-            // 发送成功，将验证码存入redis,设置过期时间为2分钟
-            redisTemplate.opsForValue().set(phone, captcha, 2, TimeUnit.MINUTES);
-        } else {
-            // 发送失败，抛出异常
-            throw new BusinessException(ResponseCode.CAPTCHA_SEND_FAILED);
-        }
+        // 发送成功，将验证码存入redis,设置过期时间为2分钟
+        redisTemplate.opsForValue().set(phone, captcha, 2, TimeUnit.MINUTES);
     }
 
     @Override
