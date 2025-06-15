@@ -20,11 +20,12 @@ public enum ResponseCode {
     // 否则，它更像是一个提示信息，而非独立的成功状态码。这里先保留，但需注意其使用场景。
 
     // --- 11xx:课程业务成功状态码
-    CATEGORY_VO_FETCH_SUCCESS(1100, "获取分类信息成功"),
-    COURSE_VO_FETCH_SUCCESS(1110,"获取课程信息成功"),
-    CHAPTER_VO_FETCH_SUCCESS(1120, "获取章节信息成功"),
-    LESSON_VO_FETCH_SUCCESS(1130, "获取课信息成功"),
-    
+    CATEGORY_LIST_FETCH_SUCCESS(1100, "获取分类列表成功"),
+    TAG_LIST_FETCH_SUCCESS(1101, "获取标签列表成功"),
+    COURSE_LIST_FETCH_SUCCESS(1110,"获取课程列表信息成功"),
+    SINGLE_COURSE_DETAIL_FETCH_SUCCESS(1111,"获取单个课程详情成功"),
+    CHAPTER_LIST_FETCH_SUCCESS(1120, "获取章节信息成功"),
+    LESSON_LIST_FETCH_SUCCESS(1130, "获取课信息成功")
     ;
 
 
