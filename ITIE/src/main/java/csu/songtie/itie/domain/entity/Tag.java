@@ -5,7 +5,8 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class Category {
+public class Tag {
+    private int tagId;
     private int categoryId;
     private String name;
     private LocalDateTime createTime;

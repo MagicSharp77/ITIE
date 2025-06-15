@@ -30,9 +30,9 @@ public class CommonResponse<T>{
     }
 
 
-    public static <T>CommonResponse<T> createForError(){
-        return new CommonResponse<T>(ResponseCode.ERROR.getCode(), ResponseCode.ERROR.getDescription());
-    }
+//    public static <T>CommonResponse<T> createForError(){
+//        return new CommonResponse<T>(ResponseCode.ERROR.getCode(), ResponseCode.ERROR.getDescription());
+//    }
     public static <T>CommonResponse<T> createForError(int code,String message){
         return new CommonResponse<T>(code, message);
     }
