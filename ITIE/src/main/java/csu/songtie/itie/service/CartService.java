@@ -2,7 +2,6 @@ package csu.songtie.itie.service;
 
 import csu.songtie.itie.common.CommonResponse;
 import csu.songtie.itie.domain.vo.CartVO;
-import csu.songtie.itie.domain.entity.cart.Cart;
 
 public interface CartService {
     /**
@@ -18,23 +17,21 @@ public interface CartService {
     public CommonResponse<CartVO> getCart(int userId);
 
     /**
-     * 更新购物车
-     * @param cart 购物车信息
+     * 添加课程到购物车
+     * @param courseId 课程ID
+     * @param userId 用户ID
      */
-    public CommonResponse<CartVO> updateCart(Cart cart);
+    public CommonResponse<CartVO> addCourseToCart(int courseId, int userId);
 
     /**
-     * 添加课程到购物车  操作 cart_item 表
+     * 从购物车移除课程
      * @param courseId 课程ID
      */
-    public CommonResponse<CartVO> addCourseToCart(int courseId);
+    public CommonResponse<CartVO> removeCourseFromCart(int courseId,int userId);
 
     /**
-     * 从购物车移除课程  操作 cart_item 表
-     * @param courseId 课程ID
+     * 清空购物车
+     * @param userId 用户ID
      */
-    public CommonResponse<CartVO> removeCourseFromCart(int courseId);
-
-    // 清空购物车
-    public CommonResponse<CartVO> clearCart();
+    public CommonResponse<CartVO> clearCart(int userId);
 }

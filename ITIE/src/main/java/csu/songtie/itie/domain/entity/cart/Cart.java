@@ -14,21 +14,15 @@ import java.sql.Date;
 @TableName("cart")
 public class Cart {
     @TableId(value = "id",type = IdType.INPUT)
-    private int id;
+    private Integer id;
     @TableField(value = "user_id")
     private int userId;
-    @TableField(value = "line_num")
-    private int lineNum;
+    @TableField(value = "item_num")
+    private int itemNum;
     @TableField(value = "original_price")
     private BigDecimal originalPrice;
     @TableField(value = "current_price")
     private BigDecimal currentPrice;
-    @TableField(value = "coupon_id")
-    private int couponId;
-    @TableField(value = "coupon_owner_id")
-    private int couponOwnerId;
-    @TableField(value = "coupon_price")
-    private BigDecimal couponPrice;
     @TableField(value = "create_time")
     private Date createTime;
     @TableField(value = "update_time")

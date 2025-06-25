@@ -51,7 +51,6 @@ public enum ResponseCode {
     ORDER_EXIST_ERROR(2200,"订单号错误"),
     ORDER_LIST_EXIST_ERROR(2201,"该用户没有购买历史"),
     ORDER_LINEITEM_EMPTY_ERROR(2202,"订单内容不能为空"),
-
     // 支付相关错误码 (2000-2099)
     PAYMENT_CREATE_FAILED(2210, "创建支付订单失败"),
     PAYMENT_NOTIFY_FAILED(2211, "处理支付回调通知失败"),
@@ -62,10 +61,12 @@ public enum ResponseCode {
     PAYMENT_SIGNATURE_INVALID(2216, "支付签名验证失败"),
     PAYMENT_ALREADY_PAID(2217, "订单已支付"),
     PAYMENT_ALREADY_CLOSED(2218, "订单已关闭"),
+    PAYMENT_SUCCESS(2219, "支付成功"),
 
     // --- 23xx:购物车业务失败状态码
     CART_EMPTY_ERROR(2300,"购物车为空"),
-
+    CART_ITEM_EXIST_ERROR(2301,"商品已在购物车中"),
+    CART_ITEM_NOT_EXIST_ERROR(2302,"商品不在购物车中"),
 
     ;
 

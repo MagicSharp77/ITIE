@@ -1,4 +1,4 @@
-package csu.songtie.itie.service;
+package csu.songtie.itie.service.order;
 
 import csu.songtie.itie.common.CommonResponse;
 import csu.songtie.itie.domain.entity.order.OrderItem;
@@ -11,12 +11,13 @@ public interface OrderService {
     public CommonResponse<List<OrderVO>> getOrdersByUserId(int userId);
 
     // 插入订单(创建订单时)
-    public void insertOrderVO(OrderVO orderVO, String payMethod);
+    public void insertOrderVO(OrderVO orderVO);
     
     // 更新订单状态 - 支付完成/订单退款
     public void updateOrder(String orderId,int status);
 
     // 通过 orderId 获取单个订单信息
     public CommonResponse<OrderVO> getOrderByOrderId(String orderId);
+//    public CommonResponse<String> handlePaymentSuccess(String orderId, double paymentAmount);
 
 }

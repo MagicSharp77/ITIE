@@ -13,7 +13,7 @@ import java.sql.Date;
 @TableName("order_item")
 public class OrderItem {
     @TableId(value = "id",type = IdType.INPUT)
-    private int id;
+    private Integer id;
     @TableField(value = "order_id")
     private String orderId;
     @TableField(value = "user_id")

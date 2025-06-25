@@ -1,38 +1,87 @@
-server:
-  port: 8080
-
+#server:
+#  port: 8080
+#
+#spring:
+#  application:
+#    name: itie
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/itie
+#    username: root
+#    password: 15168797115
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#
+## 支付宝配置
+#alipay:
+#  app-id: 你的支付宝应用ID
+#  private-key: 你的应用私钥
+#  public-key: 支付宝公钥
+#  notify-url: http://你的域名/api/pay/alipay/notify
+#  return-url: http://你的域名/api/pay/alipay/return
+#  gateway: https://openapi.alipay.com/gateway.do
+#
+## 微信支付配置
+#wx:
+#  pay:
+#    app-id: 你的微信应用ID
+#    merchant-id: 你的商户号
+#    merchant-serial-number: 你的商户证书序列号
+#    merchant-private-key: 你的商户私钥
+#    api-v3-key: 你的APIv3密钥
+#    notify-url: http://你的域名/api/pay/wx/notify
 spring:
   application:
-    name: itie
+    name: ITIE
+
   datasource:
+    url: jdbc:mysql://localhost:3306/ITIE?serverTimezone=Asia/Shanghai&characterEncoding=utf-8&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/itie
     username: root
     password: 15168797115
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.MySQL8Dialect
 
 # 支付宝配置
 alipay:
-  app-id: 你的支付宝应用ID
+  app-id: 你的APPID
   private-key: 你的应用私钥
   public-key: 支付宝公钥
-  notify-url: http://你的域名/api/pay/alipay/notify
-  return-url: http://你的域名/api/pay/alipay/return
+  notify-url: http://你的域名/api/pay/notify
+  return-url: http://你的域名/pay/success
   gateway: https://openapi.alipay.com/gateway.do
 
 # 微信支付配置
-wx:
-  pay:
-    app-id: 你的微信应用ID
-    merchant-id: 你的商户号
-    merchant-serial-number: 你的商户证书序列号
-    merchant-private-key: 你的商户私钥
-    api-v3-key: 你的APIv3密钥
-    notify-url: http://你的域名/api/pay/wx/notify 
+wxpay:
+  app-id: 你的APPID
+  mch-id: 你的商户号
+  mch-key: 你的商户密钥
+  notify-url: http://你的域名/api/pay/wx/notify
+  key-path: 你的商户证书路径
+  api-v3-key: 你的APIv3密钥
+
+# 短信服务配置
+ly:
+  sms:
+    accessKeyId: LTAI5tCswKeMBgqmLLhBmZiW
+    accessKeySecret: 7bWtaVyZNz1YrVwieyhi7DvV6R95EL
+    signName:  # 填写你的签名
+    verifyTemplateCode: SMS_154950909
+
+# Redis 配置（如需要启用，请取消注释）
+#spring:
+#  data:
+#    redis:
+#      host: localhost
+#      port: 6379
+#      database: 0
+#      timeout: 1800000
+
+# JWT 配置
+jwt:
+  secretKey: EKW8qlH9yFDWFmJq6nSvE4RsMk8G42Qi0wVNHU5e9
+  expiration: 36000000

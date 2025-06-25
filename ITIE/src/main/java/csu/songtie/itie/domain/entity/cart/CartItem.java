@@ -13,7 +13,7 @@ import java.sql.Date;
 @TableName("cart_item")
 public class CartItem {
     @TableId(value = "id",type = IdType.INPUT)
-    private int id;
+    private Integer id;
     @TableField(value = "user_id")
     private int userId;
     @TableField(value = "course_id")
@@ -28,6 +28,7 @@ public class CartItem {
     private BigDecimal courseDiscount;
     @TableField(value = "current_price")
     private BigDecimal currentPrice;
+    private int deleted;
     @TableField(value = "create_time")
     private Date createTime;
     @TableField(value = "update_time")

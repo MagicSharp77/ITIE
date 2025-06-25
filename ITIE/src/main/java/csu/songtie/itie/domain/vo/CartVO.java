@@ -12,12 +12,9 @@ import java.util.List;
 public class CartVO {
     // cart 字段
     private int userId;
-    private int lineNum;
+    private int itemNum;
     private BigDecimal originalPrice;
     private BigDecimal currentPrice;
-    private int couponId;
-    private int couponOwnerId;
-    private BigDecimal couponPrice;
     private Date createTime;
     private Date updateTime;
     private Date deleteTime;

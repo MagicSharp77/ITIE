@@ -1,4 +1,4 @@
-package csu.songtie.itie.service;
+package csu.songtie.itie.service.pay;
 
 import csu.songtie.itie.common.CommonResponse;
 import com.alipay.api.AlipayApiException;

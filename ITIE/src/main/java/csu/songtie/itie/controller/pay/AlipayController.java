@@ -1,9 +1,9 @@
-package csu.songtie.itie.controller;
+package csu.songtie.itie.controller.pay;
 
 import com.alipay.api.AlipayApiException;
 import csu.songtie.itie.domain.entity.order.Order;
-import csu.songtie.itie.service.AlipayService;
-import csu.songtie.itie.service.OrderService;
+import csu.songtie.itie.service.pay.AlipayService;
+import csu.songtie.itie.service.order.OrderService;
 import csu.songtie.itie.common.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
